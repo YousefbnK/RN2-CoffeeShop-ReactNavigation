@@ -22,13 +22,24 @@ class Login extends Component {
           placeholderTextColor="#A6AEC1"
           secureTextEntry={true}
         />
-        <TouchableOpacity style={styles.authButton}>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("CoffeeListScreen")}
+          style={styles.authButton}
+        >
           <Text style={styles.authButtonText}>Log in</Text>
         </TouchableOpacity>
-        <Text style={styles.authOther}>Click here to register!</Text>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("SignupScreen")}
+        >
+          <Text style={styles.authOther}>Click here to register!</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
+
+Login.navigationOptions = {
+  title: "Login"
+};
 
 export default Login;

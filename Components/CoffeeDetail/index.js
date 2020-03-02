@@ -16,6 +16,9 @@ import {
   Text
 } from "native-base";
 
+//Components
+import CartButton from "../CartButton";
+
 // Style
 import styles from "./styles";
 
@@ -40,7 +43,8 @@ class CoffeeDetail extends Component {
     });
 
   render() {
-    const coffeeshop = coffeeshops[0];
+    const coffeeID = this.props.navigation.getParam("CoffeeshopID");
+    const coffeeshop = coffeeshops.find(coffee => coffee.id === coffeeID);
     return (
       <Container>
         <Content>
@@ -106,5 +110,13 @@ class CoffeeDetail extends Component {
     );
   }
 }
+
+CoffeeDetail.navigationOptions = ({ navigation }) => {
+  const coffeeName = navigation.getParam("CoffeeshopName");
+  return {
+    title: coffeeshops.find(shop => shop.name === coffeeName).name,
+    headerRight: <CartButton />
+  };
+};
 
 export default CoffeeDetail;

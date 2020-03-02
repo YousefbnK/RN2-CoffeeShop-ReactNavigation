@@ -22,13 +22,24 @@ class Signup extends Component {
           placeholderTextColor="#A6AEC1"
           secureTextEntry={true}
         />
-        <TouchableOpacity style={styles.authButton}>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("CoffeeListScreen")}
+          style={styles.authButton}
+        >
           <Text style={styles.authButtonText}>Sign up</Text>
         </TouchableOpacity>
-        <Text style={styles.authOther}>Click here to log in!</Text>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("LoginScreen")}
+        >
+          <Text style={styles.authOther}>Click here to log in!</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
+
+Signup.navigationOptions = {
+  title: "Sign up"
+};
 
 export default Signup;
